@@ -2,7 +2,7 @@
 
 - name: backup-configure | Ensure backup user exists
   user:
-    name: {{ backup_user }}
+    name: "{{ backup_user }}"
 
 - name: backup-configure | Ensure node-exporter group exists
   group:
@@ -20,10 +20,10 @@
 
 - name: backup-configure | Ensure backup directories exist
   file:
-    path: {{ item }}
+    path: "{{ item }}"
     state: directory
-    owner: {{ backup_user }}
-    group: {{ backup_group }}
+    owner: "{{ backup_user }}"
+    group: "{{ backup_group }}"
   with_items:
   - "{{ backup_home }}"
   - "{{ item.work_dir|default(backup_work) }}"
